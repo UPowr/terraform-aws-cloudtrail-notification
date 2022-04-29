@@ -81,10 +81,9 @@ function getMetricsFilter(metricName, metricNamespace, fn) {
 function getFilterLogEvents(logGroupName, filterPattern, time, fn) {
     var startTime = new Date(time);
     var endTime = new Date(time);
-    startTime.setSeconds(startTime.getSeconds() - 180);
+    startTime.setSeconds(startTime.getSeconds() - process.env.OFFSET);
     console.error(startTime)
     console.error(endTime)
-    // var offset = process.env.OFFSET;
     var parameters = {
         'logGroupName': logGroupName,
         'filterPattern': filterPattern,

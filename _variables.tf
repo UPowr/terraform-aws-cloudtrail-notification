@@ -3,7 +3,7 @@ variable "enabled" {
   default     = true
 }
 
-variable "lambda_alarm_name" {
+variable "lambda_name" {
   description = "The name of the lambda which will be notified with a custom message when any alarm is performed."
   default     = "lambda_alarm_notification"
 }
@@ -14,6 +14,15 @@ variable "cloudtrail_log_group_name" {
 
 variable "aws_sns_topic_arn" {
   description = "The ARN of SNS Topic where the notification will be sent"
+}
+
+variable "lambda_timeout" {
+  description = "Set lambda Timeout"
+  default = 3
+}
+
+variable "cloudwatch_log_cloudtrail_arn" {
+  description = "Cloudwatch Loggroup ARN"
 }
 
 variable "tags" {
