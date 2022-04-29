@@ -81,8 +81,8 @@ module "cloudtrail_custom_alarms" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | lambda_name | The name for the lambda resource for the custom message.  | `string` | `lambda_alarm_notification` | no |
-| cloudtrail_log_group_name | The name of the cloudtrail logGroup that will get information from to create custom message. | `string` | n/a | yes |
-| aws_sns_topic_arn | The ARN of SNS Topic where the notification will be sent | `string` | n/a | yes |
+| cloudtrail_log_group_name | The name of the loggroup that has all Cloudtrail Logs that will be used to get information to create custom message. | `string` | n/a | yes |
+| aws_sns_topic_arn | The ARN of SNS Topic that will be responsible to send notification | `string` | n/a | yes |
 | lambda_timeout | Set lambda Timeout. | `number` | 3 | no |
 | cloudwatch_log_cloudtrail_arn | Cloudwatch Loggroup ARN | `string` | n/a | yes |
 | tags | A map of tags to add to all resources. | `map(string)` | `{}` | no |
