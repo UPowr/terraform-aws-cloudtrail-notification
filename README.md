@@ -23,7 +23,7 @@ Terraform module to provision an CloudTrail with a custom notification.
 - [SNS](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) subscription topic responsible to send the custom notification.
 
 ## Triggers
-* The Lambda function is triggered on a SNS event.
+* The Lambda function is triggered on a EventBridge event.
 * You need to provide the SNS topic.
 
 
