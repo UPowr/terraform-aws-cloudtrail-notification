@@ -58,7 +58,6 @@ resource "aws_iam_policy" "lambda_cw" {
 resource "aws_iam_role_policy_attachment" "lambda_cw" {
   role       = aws_iam_role.iam_for_lambda.name
   policy_arn = aws_iam_policy.lambda_cw.arn
-  tags = var.tags
 }
 
 

@@ -22,7 +22,6 @@ resource "aws_lambda_permission" "default" {
   function_name = aws_lambda_function.lambda.function_name
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.alarm_notification.arn
-  tags = var.tags
 }
 
 data "archive_file" "lambda_zip" {
