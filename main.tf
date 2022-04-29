@@ -1,10 +1,10 @@
 resource "aws_lambda_function" "lambda" {
-  filename      = data.archive_file.lambda_zip.output_path
+  filename      = "${path.module}/lambda.zip"
   function_name = var.lambda_name
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "index.handler"
   timeout       = var.lambda_timeout
-  source_code_hash = filebase64sha256(data.archive_file.lambda_zip.output_path)
+  source_code_hash = filebase64sha256("${path.module}/lambda.zip")
   runtime = "nodejs12.x"
   tags = var.tags
   environment {
@@ -22,12 +22,6 @@ resource "aws_lambda_permission" "default" {
   function_name = aws_lambda_function.lambda.function_name
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.alarm_notification.arn
-}
-
-data "archive_file" "lambda_zip" {
-  type = "zip"
-  source_dir  = "${path.module}/lambda"
-  output_path = "${path.module}/lambda.zip"
 }
 
 resource "aws_cloudwatch_log_group" "alarm_lambda" {
