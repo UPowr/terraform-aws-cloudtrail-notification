@@ -15,7 +15,7 @@ var processEvent = function (event, context) {
     var alarmName = event.detail.alarmName;
     var time = event.time;
     var messageNotification = null
-
+    console.log(event)
     getWatchlogData(alarmName, time, function (err, data, alarm) {
         clouldTrail = JSON.parse(data.events[0].message);
         messageNotification = handleCloudWatch(clouldTrail, alarm, data.events)

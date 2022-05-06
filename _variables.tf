@@ -12,17 +12,23 @@ variable "cloudtrail_log_group_name" {
   description = "The name of the loggroup that will get information from"
 }
 
-variable "aws_sns_topic_arn" {
-  description = "The ARN of SNS Topic where the notification will be sent"
-}
-
 variable "lambda_timeout" {
   description = "Set lambda Timeout"
   default = 3
 }
 
-variable "cloudwatch_log_cloudtrail_arn" {
-  description = "Cloudwatch Loggroup ARN"
+variable "sns_topic_name" {
+  description = "The name of the SNS Topic which will be notified when any alarm is performed."
+  default     = "CISAlarmV2"
+} 
+
+variable "alarm_account_ids" {
+  default = []
+}
+
+variable "alarm_mode" {
+  default     = "light"
+  description = "Version of alarms to use. 'light' or 'full' available"
 }
 
 variable "tags" {
@@ -31,3 +37,4 @@ variable "tags" {
     "Terraform" = true
   }
 }
+
