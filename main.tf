@@ -9,7 +9,7 @@ resource "aws_lambda_function" "lambda" {
   tags = var.tags
   environment {
     variables = {
-      LOG_GROUP = data.aws_cloudwatch_log_group.cloudtrail.name,
+      LOG_GROUP = var.cloudtrail_log_group_name,
       TOPIC_ARN= aws_sns_topic.alarms[0].arn,
       OFFSET=180
     }

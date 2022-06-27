@@ -94,7 +94,7 @@ resource "aws_cloudformation_stack" "cloudtrail_alarm" {
   template_body = var.alarm_mode == "full" ? file("${path.module}/cloudtrail-alarms-full.cf.json") : file("${path.module}/cloudtrail-alarms-light.cf.yml")
 
   parameters = {
-    CloudTrailLogGroupName = data.aws_cloudwatch_log_group.cloudtrail.name
+    CloudTrailLogGroupName = var.cloudtrail_log_group_name
     AlarmNotificationTopic = aws_sns_topic.alarms[0].id
   }
 }
